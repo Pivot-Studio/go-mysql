@@ -269,7 +269,7 @@ func (c *Canal) handleRowsEvent(e *replication.BinlogEvent) error {
 	default:
 		return errors.Errorf("%s not supported now", e.Header.EventType)
 	}
-	events := newRowsEvent(t, action, ev.Rows, e.Header)
+	events := newRowsEvent(t, action, ev.Rows, e.Header, e.RawData)
 	return c.eventHandler.OnRow(events)
 }
 
