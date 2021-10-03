@@ -36,7 +36,7 @@ func newRowsEvent(table *schema.Table, action string, rows [][]interface{}, head
 	e.Action = action
 	e.Rows = rows
 	e.Header = header
-
+	e.RawData = rawdata
 	e.handleUnsigned()
 
 	return e
