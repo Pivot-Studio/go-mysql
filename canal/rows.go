@@ -25,10 +25,11 @@ type RowsEvent struct {
 	// for update v0, only one row for a event, and we don't support this version.
 	Rows [][]interface{}
 	// Header can be used to inspect the event
-	Header *replication.EventHeader
+	Header  *replication.EventHeader
+	RawData []byte
 }
 
-func newRowsEvent(table *schema.Table, action string, rows [][]interface{}, header *replication.EventHeader) *RowsEvent {
+func newRowsEvent(table *schema.Table, action string, rows [][]interface{}, header *replication.EventHeader, rawdata []byte) *RowsEvent {
 	e := new(RowsEvent)
 
 	e.Table = table
